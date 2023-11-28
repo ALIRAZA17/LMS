@@ -39,27 +39,23 @@ export default async function Home() {
               <th scope="col">#</th>
               <th scope="col">Book Name</th>
               <th scope="col">Author</th>
-              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
 
             {
-              books.map((book)=>{
+              books.map((book, index) => {
                 return (
                   <tr>
-                  <th scope="row">1</th>
-                  <td>{book.name}</td>
-                  <td>{book.author}</td>
-                  <td>
-                    <button className="btn btn-sm btn-warning">Edit</button>
-                    <button className="btn btn-sm btn-danger ml-1">Delete</button>
-                  </td>
-                </tr>
+                    <th scope="row">{index + 1}</th>
+                    <td>{book.name}</td>
+                    <td>{book.author}</td>
+
+                  </tr>
                 );
               })
             }
-                      
+
           </tbody>
         </table>
 
