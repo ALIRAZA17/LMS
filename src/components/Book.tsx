@@ -15,7 +15,7 @@ export default function Book(props: BookProps): JSX.Element {
       <td>{authorName}</td>
       <td>
         <button className="btn btn-sm btn-warning">Edit</button>
-        <DeletePostButton key={id} postId={id}/>
+        <DeletePostButton key={id} bookId={id}/>
       </td>
     </>
   );

@@ -2,14 +2,14 @@
 import { useRouter } from "next/navigation";
 
 interface DeletePostButtonProps {
-  postId: string;
+  bookId: string;
 }
 
-export default function DeletePostButton({ postId }: DeletePostButtonProps) {
+export default function DeletePostButton({ bookId }: DeletePostButtonProps) {
   const router = useRouter();
   const handleClick = async () => {
     try {
-      await fetch(`/api/post/${postId}`, {
+      await fetch(`/api/delete-book/${bookId}`, {
         method: "DELETE",
       });
       router.refresh();
