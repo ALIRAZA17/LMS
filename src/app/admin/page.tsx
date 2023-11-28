@@ -1,8 +1,18 @@
+import Link from "next/link";
 export default function AdminPage() {
     return (
       <>
         <h1 className="text-center my-4">All Books Data</h1>
-  
+
+        <div className="d-flex justify-content-center align-items-center my-4">
+
+          <Link href={'/add-book'}>
+        <button className="btn btn-md btn-primary">
+          Add Book
+        </button>
+
+        </Link>
+        </div>
         <div className="mt-4 container">
           <table className="table table-striped">
             <thead>

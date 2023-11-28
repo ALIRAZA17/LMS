@@ -1,5 +1,19 @@
 import Link from "next/link";
-export default function Home() {
+import prisma from "../../lib/prisma";
+
+
+async function getAllBooks() {
+  const books = await prisma.book.findMany({
+    where: {
+      name: {
+        not: null
+      }
+    }
+  });
+  return books;
+}
+export default async function Home() {
+  const books = await getAllBooks();
   return (
     <>
       <div className="d-flex justify-content-center align-items-center my-4">
@@ -29,16 +43,23 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>
-                <button className="btn btn-sm btn-warning">Edit</button>
-                <button className="btn btn-sm btn-danger ml-1">Delete</button>
-              </td>
-            </tr>
 
+            {
+              books.map((book)=>{
+                return (
+                  <tr>
+                  <th scope="row">1</th>
+                  <td>{book.name}</td>
+                  <td>{book.author}</td>
+                  <td>
+                    <button className="btn btn-sm btn-warning">Edit</button>
+                    <button className="btn btn-sm btn-danger ml-1">Delete</button>
+                  </td>
+                </tr>
+                );
+              })
+            }
+                      
           </tbody>
         </table>
 
