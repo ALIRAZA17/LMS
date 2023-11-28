@@ -1,11 +1,12 @@
 import Link from "next/link";
 import prisma from "../../../lib/prisma";
+import Book from "@/components/Book";
 
 async function getAllBooks() {
   const books = await prisma.book.findMany({
     where: {
       name: {
-        not: null
+        not: ""
       }
     }
   });
@@ -13,7 +14,6 @@ async function getAllBooks() {
 }
 export default async function AdminPage() {
   const books = await getAllBooks();
-
   return (
     <>
       <h1 className="text-center my-4">All Books Data</h1>
@@ -41,19 +41,9 @@ export default async function AdminPage() {
             {
               books.map((book, index) => {
                 return (
-                  <tr>
-                    <th scope="row">{index+1}</th>
-                    <td>{book.name}</td>
-                    <td>{book.author}</td>
-                    <td>
-                      <button className="btn btn-sm btn-warning">
-                        Edit
-                      </button>
-                      <button className="btn btn-sm btn-danger ml-2">
-                        Delete
-                      </button>
-                    </td>
-
+                  <tr key={book.id}>
+                    <th scope="row">{index + 1}</th>
+                <Book id={book.id} key={book.id} authorName={book.author} bookName={book.name} />
                   </tr>
                 );
               })

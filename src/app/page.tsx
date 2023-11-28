@@ -1,12 +1,13 @@
 import Link from "next/link";
 import prisma from "../../lib/prisma";
+import Book from "@/components/Book";
 
 
 async function getAllBooks() {
   const books = await prisma.book.findMany({
     where: {
       name: {
-        not: null
+        not: ""
       }
     }
   });
@@ -42,15 +43,12 @@ export default async function Home() {
             </tr>
           </thead>
           <tbody>
-
             {
               books.map((book, index) => {
                 return (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{book.name}</td>
-                    <td>{book.author}</td>
-
+                    <Book id={book.id} key={book.id} authorName={book.author} bookName={book.name} />
                   </tr>
                 );
               })
