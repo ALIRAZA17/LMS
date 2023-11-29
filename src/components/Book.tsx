@@ -1,4 +1,5 @@
 import DeletePostButton from "./deleteBookButton";
+import EditBookButton from "./editBookButton";
 
 interface BookProps {
   id: string;
@@ -14,7 +15,7 @@ export default function Book(props: BookProps): JSX.Element {
       <td>{bookName}</td>
       <td>{authorName}</td>
       <td>
-        <button className="btn btn-sm btn-warning">Edit</button>
+        <EditBookButton key={id} bookId={id}/>
         <DeletePostButton key={id} bookId={id}/>
       </td>
     </>

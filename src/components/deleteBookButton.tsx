@@ -1,11 +1,11 @@
 'use client'
 import { useRouter } from "next/navigation";
 
-interface DeletePostButtonProps {
+interface DeleteBookButtonProps {
   bookId: string;
 }
 
-export default function DeletePostButton({ bookId }: DeletePostButtonProps) {
+export default function DeleteBookButton({ bookId }: DeleteBookButtonProps) {
   const router = useRouter();
   const handleClick = async () => {
     try {

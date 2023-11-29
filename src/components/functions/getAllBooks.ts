@@ -4,7 +4,7 @@ export async function getAllBooks() {
   const books = await prisma.book.findMany({
     where: {
       name: {
-        not: null
+        not: ""
       }
     }
   });

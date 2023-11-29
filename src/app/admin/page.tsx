@@ -43,12 +43,11 @@ export default async function AdminPage() {
                 return (
                   <tr key={book.id}>
                     <th scope="row">{index + 1}</th>
-                <Book id={book.id} key={book.id} authorName={book.author} bookName={book.name} />
+                    <Book id={book.id} key={book.id} authorName={book.author} bookName={book.name} />
                   </tr>
                 );
               })
             }
-
           </tbody>
         </table>
 

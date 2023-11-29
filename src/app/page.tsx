@@ -1,18 +1,8 @@
 import Link from "next/link";
 import prisma from "../../lib/prisma";
-import Book from "@/components/Book";
+import { getAllBooks } from "@/components/functions/getAllBooks";
 
 
-async function getAllBooks() {
-  const books = await prisma.book.findMany({
-    where: {
-      name: {
-        not: ""
-      }
-    }
-  });
-  return books;
-}
 export default async function Home() {
   const books = await getAllBooks();
   return (
@@ -48,12 +38,12 @@ export default async function Home() {
                 return (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <Book id={book.id} key={book.id} authorName={book.author} bookName={book.name} />
+                    <td>{book.name}</td>
+                    <td>{book.author}</td>
                   </tr>
                 );
               })
             }
-
           </tbody>
         </table>
 
