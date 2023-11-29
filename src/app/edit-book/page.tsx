@@ -52,7 +52,8 @@ export default function EditBook(params: {
                 body: JSON.stringify({book})
             })
 
-            router.refresh()
+            router.push('/');
+            router.refresh();
         } catch (error) {
             console.error(error)
         }

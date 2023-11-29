@@ -1,6 +1,5 @@
 import Link from "next/link";
-import prisma from "../../lib/prisma";
-import { getAllBooks } from "@/components/functions/getAllBooks";
+import { getAllBooks } from "@/components/functions/getAllBooks"; 
 
 
 export default async function Home() {

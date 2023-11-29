@@ -30,7 +30,8 @@ export default function AddBook() {
                 body: JSON.stringify({ bookName, authorName })
             })
 
-            router.refresh()
+            router.push('/')
+            router.refresh();
         } catch (error) {
             console.error(error)
         }
