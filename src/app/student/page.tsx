@@ -1,4 +1,12 @@
-export default function StudentPage() {
+import { getAllBooks } from "@/components/functions/getAllBooks";
+import BorrowBookButton from "@/components/borrowBookButton";
+import { getStudentBooks } from "@/components/functions/getStudentBooks";
+import RemoveBookButton from "@/components/removeBookButton";
+
+export default async function StudentPage() {
+  const books = await getAllBooks();
+  const StudentBooks = await getStudentBooks();
+
     return (
       <>
         <h1 className="text-center my-4">All Books Data</h1>
@@ -13,14 +21,20 @@ export default function StudentPage() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>
-                  <button className="btn btn-sm btn-warning">Borrow</button>                  
-                </td>
-              </tr>
+            {
+              books.map((book, index) => {
+                return (
+                  <tr>
+                    <th scope="row">{index + 1}</th>
+                    <td>{book.name}</td>
+                    <td>{book.author}</td>
+                    <td>
+                      <BorrowBookButton id={book.id} key={book.id}/>
+                    </td>
+                  </tr>
+                );
+              })
+            }
               
             </tbody>
           </table>
@@ -38,15 +52,22 @@ export default function StudentPage() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>
-                  <button className="btn btn-sm btn-danger">Remove</button>                  
-                </td>
-              </tr>
-              
+
+              {
+                StudentBooks.map((book, index) => {
+                  return (
+                    <tr>
+                      <th scope="row">{index + 1}</th>
+                      <td>{book.name}</td>
+                      <td>{book.author}</td>
+                      <td>
+                        <RemoveBookButton bookId={book.id} key={book.id}/>
+                      </td>
+                    </tr>
+                  );
+                })
+              }
+
             </tbody>
           </table>
   

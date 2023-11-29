@@ -16,5 +16,13 @@ model Book {
   author         String   
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  @@map(name: "users")
+  @@map(name: "books")
+}   
+model Student {
+  id            String     @default(cuid()) @id
+  name          String    @unique
+  author         String   
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  @@map(name: "students")
 }   
